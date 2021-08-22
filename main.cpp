@@ -3,19 +3,23 @@
 #include <fstream>
 
 int main() {
-    std::ofstream TxtFile("../pic.txt");
-    int Length, Width;
+    std::ofstream txtFile("../pic.txt");
+     if(!txtFile.is_open()){
+         std::cout << "Can't open file pic.txt" << std::endl;
+         return -1;
+     }
+    int length, width;
     std::srand(std::time(nullptr));
     std::cout << "Input the width: ";
-    std::cin >> Width;
+    std::cin >> width;
     std::cout << "Input the length: ";
-    std::cin >> Length;
-    for(int i=0; i<Length; i++){
-        for(int j=0; j<Width; j++){
-            TxtFile << std::rand() % 2;
+    std::cin >> length;
+    for(int i=0; i < length; i++){
+        for(int j=0; j < width; j++){
+            txtFile << std::rand() % 2;
         }
-        TxtFile << std::endl;
+        txtFile << std::endl;
     }
-    TxtFile.close();
+    txtFile.close();
     return 0;
 }
